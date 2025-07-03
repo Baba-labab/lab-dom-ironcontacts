@@ -39,12 +39,45 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+threeContacts.forEach(contact => {
+const newRow = document.createElement("tr"); 
+newRow.innerHTML = `
+<td>
+<img src="${contact.pictureUrl}" />
+</td>
+<td> ${contact.name} </td>
+<td> ${contact.popularity.toFixed(2)} </td>
+<td>
+    <button class="btn-delete">Delete</button>
+</td>
+<td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt = "like" />
+</button>
+</td>
+`; 
+const deleteButton = newRow.querySelector(".btn-delete")
 
+  deleteButton.addEventListener('click', remove) 
+    function remove() {
+      tableBody.removeChild(newRow); 
+    }
+
+const likeButton = newRow.querySelector(".btn-like")  
+
+likeButton.addEventListener('click', () => {
+  likeButton.classList.toggle("selected")
+})
+
+  tableBody.appendChild(newRow)
+
+});
 
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
+  
   
   
 
